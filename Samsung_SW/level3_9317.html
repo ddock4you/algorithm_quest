@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body></body>
+    <script>
+        /*
+                [입력]
+                첫 번째 줄에 테스트 케이스의 수 TC 가 주어진다.
+                이후 TC 개의 테스트 케이스가 새 줄로 구분되어 주어진다.
+                각 테스트 케이스는 다음과 같이 구성되어 있다.
+
+                첫 번째 줄에 문자열의 길이 N 이 주어진다. (1 ≤ N ≤ 100,000)
+                두 번째 줄에 석찬이가 따라서 적어야 하는 문자열이 주어진다.
+                세 번째 줄에 석찬이가 받아 적은 문자열이 주어진다.
+                두 번째 줄과 세 번째 줄에 주어진 문자열은 모두 알파벳 대소문자로 구성되어 있고,
+                문자열의 길이는 첫 번째 줄에서 주어진 N 이다.
+            
+                [출력]
+
+                각 테스트 케이스마다 ‘#t ’(t 는 테스트케이스 번호를 의미하며 1부터 시작한다)를 출력하고,
+                석찬이가 맞게 받아 적은 문자의 개수를 출력하라. 틀린 개수가 아님에 유의하라.
+
+                [입력시 화면]                
+                2
+                16
+                MyNameIsSeokChan
+                mynameisseokchan
+                15
+                SamsungSoftware
+                MembershipZzang	// 테스트 케이스 개수 TC    = 2
+                // 첫번째 테스트 케이스 문자열의 길이 N  =16
+                // MyNameIsSeokChan 따라 적어야 하는 문자열
+                // mynameisseokchan  따라 적은 문자 
+                // 두번째 테스트 케이스 문자열의 길이 N  =15
+                // SamsungSoftware
+                // MembershipZzang
+
+                [출력시 화면]
+                #1 11
+                #2 2	// 첫 번째 테스트 케이스 결과
+                // 두 번째 테스트 케이스 결과
+            */
+
+        const numCheck = (num) => {
+            if (isNaN(num)) {
+                alert("숫자만 입력해주세요.");
+                return false;
+            }
+        };
+        const testStart = () => {
+            let testCase = Number(prompt("테스트 횟수를 입력해주세요."));
+            // 숫자인지 아닌지 체크
+            numCheck(testCase);
+
+            for (let i = 0; i < testCase; i++) {
+                let textLength = Number(
+                    prompt(`${i + 1}번째 문자열 길이 수를 입력해주세요.`)
+                );
+                // 숫자인지 아닌지 체크
+                numCheck(textLength);
+                if (textLength < 1 || textLength > 100000) {
+                    alert(
+                        "올바르지 않은 문자열 길이 수 입니다.(1 ~ 100000자만 허용)"
+                    );
+                }
+                let answerTextArray = [];
+                let questTextArray = [];
+                let answerNum = "";
+                let answerText = prompt(
+                    `${
+                        i + 1
+                    }번째 따라적어야 할 문자열을 입력해주세요. (${textLength}문자 입력)`
+                );
+                if (textLength !== answerText.length) {
+                    alert(
+                        `설정한 문자열 길이 수와 입력하신 문자의 개수가 다릅니다.\n 설정한 문자 수: ${textLength} 글자 \n실제 입력하신 문자의 수: ${answerText.length} 글자`
+                    );
+                    return;
+                }
+
+                const a = "javascript";
+
+                let questText = prompt(
+                    `대괄호 안에 있는 문자를 입력해주세요. [${answerText}]`
+                );
+                for (let j = 0; j < answerText.length; j++) {
+                    answerTextArray.push(answerText.charAt(j));
+                    questTextArray.push(questText.charAt(j));
+                    if (answerTextArray[j] === questTextArray[j]) {
+                        answerNum = Number(answerNum + 1);
+                    }
+                }
+                console.log(`#${i + 1} 정답개수: ${answerNum}`);
+            }
+        };
+        testStart();
+    </script>
+</html>
