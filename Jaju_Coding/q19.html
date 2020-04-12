@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>제곱을 구하자</title>
+    </head>
+    <body>
+        <script>
+            /*
+           공백으로 구분하여 두 숫자 a와 b가 주어지면, a의 b승을 구하는 프로그램을 작성하세요.
+        */
+
+            const num = (n) => {
+                const nums = n.split(" ");
+                return Math.pow(Number(nums[0]), Number(nums[1]));
+            };
+
+            console.log(num("2 4"));
+        </script>
+    </body>
+</html>
