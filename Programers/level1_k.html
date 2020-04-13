@@ -18,11 +18,8 @@
                         .slice(commands[i][0] - 1, commands[i][1])
                         .sort((a, b) => a - b);
                     answer.push(newArray[commands[i][2] - 1]);
-                    console.log(newArray);
                 }
-                console.log(answer);
-                // return console.log(`array: ${array}\ncommand: ${commands}`);
-                // return answer;
+                return answer;
             };
             solution(
                 [1, 5, 2, 6, 3, 7, 4],
