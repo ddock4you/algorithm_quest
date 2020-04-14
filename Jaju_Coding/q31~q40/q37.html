@@ -20,31 +20,50 @@
                 혜원(이)가 총 4표로 반장이 되었습니다.
             */
 
-            // const max = (n) => {
+            const max = (n) => {
+                let array = n.split(" ");
+                let result = {};
+                let winner = "";
 
-            // }
+                for (let i in array) {
+                    let val = array[i];
+                    // console.log(i);
+                    result[val] =
+                        result[val] === undefined
+                            ? 1
+                            : (result[val] = result[val] + 1);
+                }
+                winner = Object.keys(result).reduce((a, b) => {
+                    return result[a] > result[b] ? a : b;
+                });
+                return console.log(
+                    `${winner}(이)가 총 ${result[winner]}표로 반장이 되었습니다.`
+                );
+            };
+
+            max("원범 원범 혜원 혜원 혜원 혜원 유진 유진");
 
             // console.log('')
-            const array = prompt("이름을 입력해주세요.").split(" ");
-            let result = {};
-            let winner = "";
+            // const array = prompt("이름을 입력해주세요.").split(" ");
+            // let result = {};
+            // let winner = "";
 
-            for (let index in array) {
-                let val = array[index];
-                result[val] =
-                    result[val] === undefined
-                        ? 1
-                        : (result[val] = result[val] + 1);
-                console.log(val);
-            }
+            // for (let index in array) {
+            //     let val = array[index];
+            //     result[val] =
+            //         result[val] === undefined
+            //             ? 1
+            //             : (result[val] = result[val] + 1);
+            //     console.log(val);
+            // }
 
-            winner = Object.keys(result).reduce(function (a, b) {
-                return result[a] > result[b] ? a : b;
-            });
+            // winner = Object.keys(result).reduce(function (a, b) {
+            //     return result[a] > result[b] ? a : b;
+            // });
 
-            console.log(
-                `${winner}(이)가 총 ${result[winner]}표로 반장이 되었습니다.`
-            );
+            // console.log(
+            //     `${winner}(이)가 총 ${result[winner]}표로 반장이 되었습니다.`
+            // );
         </script>
     </body>
 </html>
