@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>콤마 찍기</title>
+    </head>
+    <body>
+        <script>
+            /*
+            원범이는 편의점 아르바이트가 끝난 후 정산을 하고자 합니다.
+            정산을 빨리하고 집에 가고 싶은 원범이는 프로그램을 만들려고 합니다.
+
+            숫자를 입력받고 천 단위로 콤마(,)를 찍어주세요.
+
+            예를 들어, 123456789를 입력받았으면 123,456,789를 출력해야 합니다.
+        */
+            // 내 코드
+            const func = (num) => {
+                const sNum = String(num);
+                let point = sNum.length % 3;
+
+                let comma = sNum.substring(0, point);
+                while (point < sNum.length) {
+                    comma += ",";
+                    comma += sNum.substring(point, point + 3);
+                    point += 3;
+                }
+                return comma;
+            };
+
+            console.log(func(1000000));
+
+            // 답안지
+            /*
+                const n = prompt('숫자를 입력해주세요.');
+                parseInt(n, 10);
+
+                console.log(n.toLocaleString());
+            */
+        </script>
+    </body>
+</html>
