@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>2016년</title>
+    </head>
+    <body>
+        <script>
+            // https://programmers.co.kr/learn/courses/30/lessons/12901
+
+            const solution = (a, b) => {
+                let answer = "";
+                const dayArr = [
+                    "SUN",
+                    "MON",
+                    "TUE",
+                    "WED",
+                    "THU",
+                    "FRI",
+                    "SAT",
+                ];
+                return (answer = dayArr[new Date(2016, a - 1, b).getDay()]);
+            };
+
+            console.log(solution(5, 24));
+        </script>
+    </body>
+</html>
