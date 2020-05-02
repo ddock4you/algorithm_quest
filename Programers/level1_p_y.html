@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>문자열 내 p와 y 개수</title>
+    </head>
+    <body>
+        <script>
+            // https://programmers.co.kr/learn/courses/30/lessons/12916
+
+            const solution = (s) => {
+                const p = s.split("").filter((v) => ["p", "P"].includes(v));
+                const y = s.split("").filter((v) => ["y", "Y"].includes(v));
+
+                return p.length === y.length;
+            };
+
+            console.log(solution("pPoooyyY"));
+        </script>
+    </body>
+</html>
