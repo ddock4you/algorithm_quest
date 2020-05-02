@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>문자열 내 마음대로 정렬하기</title>
+    </head>
+    <body>
+        <script>
+            // https://programmers.co.kr/learn/courses/30/lessons/12915
+
+            const solution = (strings, n) => {
+                return strings.sort((a, b) =>
+                    a[n] === b[n]
+                        ? a.localeCompare(b)
+                        : a[n].localeCompare(b[n])
+                );
+            };
+
+            console.log(solution(["sun", "bed", "car"], 1));
+            // lexicographic order: 사전순 정렬
+
+            // 참고 코드
+            // function solution(strings, n) {
+            //     return strings.sort((a, b) => {
+            //         const chr1 = a.charAt(n);
+            //         const chr2 = b.charAt(n);
+
+            //         if (chr1 == chr2) {
+            //             return (a > b) - (a < b);
+            //         } else {
+            //             return (chr1 > chr2) - (chr1 < chr2);
+            //         }
+            //     })
+            // }
+        </script>
+    </body>
+</html>
