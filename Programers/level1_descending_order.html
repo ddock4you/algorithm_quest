@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>문자열 내림차순으로 배치하기</title>
+    </head>
+    <body>
+        <script>
+            // https://programmers.co.kr/learn/courses/30/lessons/12917
+
+            const solution = (s) => {
+                return s
+                    .split("")
+                    .sort((a, b) => b.charCodeAt() - a.charCodeAt())
+                    .join("");
+            };
+
+            console.log(solution("Zbcdefg"));
+        </script>
+    </body>
+</html>
