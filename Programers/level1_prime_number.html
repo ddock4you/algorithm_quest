@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>소수 찾기</title>
+    </head>
+    <body>
+        <script>
+            // https://programmers.co.kr/learn/courses/30/lessons/12921
+
+            // const solution = (n) => {
+            //     let answer = 0;
+            //     for (let i = 2; i <= n; i += 1) {
+            //         for (let j = 2; j <= i; j += 1) {
+            //             if (j === i) {
+            //                 answer += 1;
+            //             }
+            //             if (i % j === 0) {
+            //                 break;
+            //             }
+            //         }
+            //     }
+            //     return answer;
+            // };
+
+            const solution = (n) => {
+                const primes = [];
+                for (let j = 2; j <= n; j++) {
+                    let isPrime = true;
+                    const sqrt = Math.sqrt(j);
+                    console.log(`j: ${j} sqrt : ${sqrt} primes: ${primes}`);
+                    for (let i = 0; primes[i] <= sqrt; i++) {
+                        if (j % primes[i] === 0) {
+                            isPrime = false;
+                            break;
+                        }
+                    }
+                    if (isPrime) {
+                        primes.push(j);
+                    }
+                }
+                return primes.length;
+            };
+
+            console.log(solution(10));
+        </script>
+    </body>
+</html>
