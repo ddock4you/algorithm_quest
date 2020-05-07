@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>시저 암호</title>
+    </head>
+    <body>
+        <script>
+            const solution = (s, n) => {
+                return s
+                    .split("")
+                    .map((word) => {
+                        return word === " "
+                            ? " "
+                            : word.charCodeAt() + n > 122 ||
+                              (word.charCodeAt() <= 90 &&
+                                  word.charCodeAt() + n > 90)
+                            ? String.fromCharCode(word.charCodeAt() + n - 26)
+                            : String.fromCharCode(word.charCodeAt() + n);
+                    })
+                    .join("");
+            };
+
+            console.log(solution("Z z", 3));
+        </script>
+    </body>
+</html>
