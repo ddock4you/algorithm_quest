@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>제일 작은 수 제거하기</title>
+    </head>
+    <body>
+        <script>
+            // https://programmers.co.kr/learn/courses/30/lessons/12935
+
+            const solution = (arr) => {
+                return arr.length < 2 ? -1 : arr.filter((v) => v !== v);
+            };
+
+            console.log(solution([4, 3, 5, 1]));
+        </script>
+    </body>
+</html>
