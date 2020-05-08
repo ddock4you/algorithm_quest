@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>이상한 문자 만들기</title>
+    </head>
+    <body>
+        <script>
+            // https://programmers.co.kr/learn/courses/30/lessons/12930
+
+            const solution = (s) => {
+                return s
+                    .split(" ")
+                    .map((first) =>
+                        first
+                            .split("")
+                            .map((second, i) =>
+                                i % 2 === 0
+                                    ? second.toUpperCase()
+                                    : second.toLowerCase()
+                            )
+                            .join("")
+                    )
+                    .join(" ");
+            };
+
+            console.log(solution("try hello world"));
+        </script>
+    </body>
+</html>
