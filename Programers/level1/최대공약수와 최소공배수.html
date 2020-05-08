@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>최대공약수와 최소공배수</title>
+    </head>
+    <body>
+        <script>
+            const solution = (n, m) => {
+                const nArray = [];
+                let minM = 0;
+                n > m && ([n, m] = [m, n]);
+
+                // 공약수 구하기
+                for (let i = 1; i <= n; i += 1) {
+                    if (n % i === 0 && m % i === 0) {
+                        nArray.push(i);
+                    }
+                }
+                // 공배수 구하기
+                for (let i = 1; i < n * m; i += 1) {
+                    if ((m * i) % n === 0) {
+                        minM = m * i;
+                        break;
+                    }
+                }
+
+                return [Math.max(...nArray), minM];
+            };
+
+            console.log(solution(2, 5));
+        </script>
+    </body>
+</html>
