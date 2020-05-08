@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>자연수 뒤집어 배열로 만들기</title>
+    </head>
+    <body>
+        <script>
+            // https://programmers.co.kr/learn/courses/30/lessons/12932
+
+            const solution = (n) => {
+                return String(n)
+                    .split("")
+                    .reverse()
+                    .map((v) => Number(v));
+            };
+
+            console.log(solution(12345));
+        </script>
+    </body>
+</html>
