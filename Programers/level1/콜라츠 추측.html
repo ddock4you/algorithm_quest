@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>콜라츠 추측</title>
+    </head>
+    <body>
+        <script>
+            const solution = (n) => {
+                let count = 0;
+
+                while (count < 500) {
+                    if (n === 1) {
+                        return count;
+                    }
+                    n % 2 === 0 ? (n /= 2) : (n = n * 3 + 1);
+                    count += 1;
+                }
+                return -1;
+            };
+
+            console.log(solution(16));
+        </script>
+    </body>
+</html>
