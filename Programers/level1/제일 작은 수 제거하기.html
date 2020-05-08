@@ -10,10 +10,11 @@
             // https://programmers.co.kr/learn/courses/30/lessons/12935
 
             const solution = (arr) => {
-                return arr.length < 2 ? -1 : arr.filter((v) => v !== v);
+                const min = Math.min(...arr);
+                return arr.length < 2 ? [-1] : arr.filter((v) => v !== min);
             };
 
-            console.log(solution([4, 3, 5, 1]));
+            console.log(solution([10]));
         </script>
     </body>
 </html>
