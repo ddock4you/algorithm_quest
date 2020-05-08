@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>하샤드 수</title>
+    </head>
+    <body>
+        <script>
+            const solution = (x) => {
+                const arr = [];
+                let c = x;
+                while (c !== 0) {
+                    arr.push(c % 10);
+                    c = Math.floor(c / 10);
+                }
+
+                return x % arr.reduce((a, b) => a + b) === 0 ? true : false;
+            };
+
+            console.log(solution(13));
+        </script>
+    </body>
+</html>
