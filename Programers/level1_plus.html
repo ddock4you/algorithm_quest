@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>자릿수 더히기</title>
+    </head>
+    <body>
+        <script>
+            // https://programmers.co.kr/learn/courses/30/lessons/12931
+
+            const solution = (n) => {
+                return String(n)
+                    .split("")
+                    .map((v) => Number(v))
+                    .reduce((acc, cur) => acc + cur);
+            };
+
+            console.log(solution(123));
+        </script>
+    </body>
+</html>
