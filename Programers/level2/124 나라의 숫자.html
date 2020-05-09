@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>124 나라의 숫자</title>
+    </head>
+    <body>
+        <script>
+            const solution = (n) => {
+                let answer = String();
+                // let rest = 0;
+
+                while (n > 0) {
+                    let rest = n % 3;
+
+                    n = Math.floor(n / 3);
+                    if (rest === 0) {
+                        rest = 4;
+                        n -= 1;
+                    }
+
+                    answer += rest;
+                }
+
+                return answer.split("").reverse().join("");
+            };
+
+            console.log(solution(10));
+        </script>
+    </body>
+</html>
