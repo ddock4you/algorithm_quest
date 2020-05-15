@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>비밀지도</title>
+    </head>
+    <body>
+        <script>
+            const solution = (n, arr1, arr2) => {
+                let tresureMap = [arr1, arr2];
+                let answer = Array(n)
+                    .fill()
+                    .map(() => Array(n));
+
+                tresureMap = tresureMap.map((piece, i) => {
+                    return (piece = piece.map((arr, j) => {
+                        return arr.toString(2).padStart(n, "0").split("");
+                    }));
+                });
+
+                tresureMap[0].map((arr, i) => {
+                    arr.map((element, j) => {
+                        element === "0" && tresureMap[1][i][j] === "0"
+                            ? (answer[i][j] = " ")
+                            : (answer[i][j] = "#");
+                    });
+                });
+                return answer.map((arr) => arr.join(""));
+
+                // const solution = (n, a, b) =>
+                //     a.map((a, i) =>
+                //         (a | b[i])
+                //             .toString(2)
+                //             .padStart(n, 0)
+                //             .replace(/0/g, " ")
+                //             .replace(/1/g, "#")
+                //     );
+            };
+
+            console.log(solution(5, [9, 20, 28, 18, 11], [30, 1, 21, 17, 28]));
+        </script>
+    </body>
+</html>
