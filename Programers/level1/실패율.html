@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>실패율</title>
+    </head>
+    <body>
+        <script>
+            const solution = (N, stages) => {
+                const arr = new Array();
+
+                for (let i = 1; i <= N; i++) {
+                    let stageNum = stages.filter((e) => e === i).length;
+                    if (stageNum === 0) {
+                        arr.push({
+                            stage: i,
+                            failRate: 0,
+                        });
+                    } else {
+                        arr.push({
+                            stage: i,
+                            failRate: stageNum / stages.length,
+                        });
+                        stages = stages.filter((e) => e !== i);
+                    }
+                }
+
+                const newArr = arr
+                    .sort((a, b) => {
+                        if (a.failRate === b.failRate) {
+                            return a.stage - b.stage;
+                        }
+                        return b.failRate - a.failRate;
+                    })
+                    .map((e) => e.stage);
+                return newArr;
+            };
+
+            console.log(solution(4, [4, 4, 4, 4, 4]));
+        </script>
+    </body>
+</html>
