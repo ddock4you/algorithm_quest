@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>가장 큰 수</title>
+    </head>
+    <body>
+        <script>
+            //
+
+            const solution = (numbers) => {
+                const answer = numbers
+                    .map((e) => String(e))
+                    .sort((a, b) => b + a - (a + b))
+                    .join("");
+                return answer[0] === "0" ? "0" : answer;
+            };
+
+            console.log(solution([3, 30, 34, 5, 9]));
+        </script>
+    </body>
+</html>
