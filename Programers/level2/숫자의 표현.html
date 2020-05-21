@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>숫자의 표현</title>
+    </head>
+    <body>
+        <script>
+            const solution = (n) => {
+                // const arr = new Array(n).fill().map((n, i) => i + 1);
+                // let count = 0;
+                // let sum = 0;
+
+                // for (let i = 0; i < arr.length; i += 1) {
+                //     for (let j = 0; arr.length; j += 1) {
+                //         if (sum === n) {
+                //             count += 1;
+                //             sum = 0;
+                //             break;
+                //         } else if (sum > n) {
+                //             sum = 0;
+                //             break;
+                //         } else {
+                //             sum += arr[i + j];
+                //         }
+                //     }
+                // }
+                // return count;
+
+                // *** n의 약수 중에 홀수의 갯수가 정답과 같았음
+                let answer = 0;
+
+                for (let i = 1; i <= n; i++) {
+                    if (n % i == 0 && i % 2 == 1) answer++;
+                }
+                return answer;
+            };
+
+            console.log(solution(150055420));
+        </script>
+    </body>
+</html>
