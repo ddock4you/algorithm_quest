@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>최솟값 만들기</title>
+    </head>
+    <body>
+        <script>
+            // https://programmers.co.kr/learn/courses/30/lessons/12941
+
+            const solution = (A, B) => {
+                let bArr = B.sort((a, b) => b - a);
+
+                return A.sort((a, b) => a - b)
+                    .map((a, i) => a * bArr[i])
+                    .reduce((a, b) => a + b);
+            };
+
+            console.log(solution([1, 2], [3, 4]));
+        </script>
+    </body>
+</html>
