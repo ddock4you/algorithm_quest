@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JadenCase 문자열 만들기</title>
+    </head>
+    <body>
+        <script>
+            // https://programmers.co.kr/learn/courses/30/lessons/12951
+
+            // 이게 더 빠름
+            const solution = (s) => {
+                return s
+                    .split(" ")
+                    .map((v) =>
+                        v
+                            .split("")
+                            .map((e, i) =>
+                                i === 0 ? e.toUpperCase() : e.toLowerCase()
+                            )
+                            .join("")
+                    )
+                    .join(" ");
+            };
+
+            // const solution = (s) => {
+            //     return s
+            //         .split(" ")
+            //         .map((v) =>
+            //             v.toLowerCase().replace(/./, v[0].toUpperCase())
+            //         );
+            // };
+
+            console.log(solution("3people unFollowed me"));
+        </script>
+    </body>
+</html>
