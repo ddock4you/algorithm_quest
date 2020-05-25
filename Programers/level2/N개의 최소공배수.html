@@ -9,19 +9,13 @@
         <script>
             // https://programmers.co.kr/learn/courses/30/lessons/12953
 
+            // 두 수의 곱은 최소공배수와 최대공약수의 곱과 같다
             const solution = (arr) => {
-                for (let i = 1;i < 2; i += 1) {
-                    while (arr[i-1] % arr[i] !== 0) {
-                        arr[i] = arr[i-1] % arr[i];
-                        arr[i-1] =
+                return arr.reduce((a, b) => {
+                    function u(c, d) {
+                        return d % c ? u(d % c, c) : c;
                     }
-                }
-
-                return arr.reduce((a, c) => {
-                    const u = (n, m) => {
-                        return m % n ? u(m % n, n) : n;
-                    };
-                    return (a * c) / u(a, c);
+                    return (a * b) / u(a, b);
                 });
             };
 
