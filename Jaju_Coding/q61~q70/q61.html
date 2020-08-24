@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>문자열 압축하기</title>
+    </head>
+    <body>
+        <script>
+            // 문자열을 입력받고 연속되는 문자열을 압축해서 표현하고 싶습니다.
+
+            // **입력**
+            // aaabbbbcdddd
+
+            // **출력**
+            // a3b4c1d4
+
+            const func = (num) => {
+                const array = num.split("");
+                let word = array[0];
+                let count = 1;
+                let final = new String();
+
+                array.forEach((text, i) => {
+                    if (text === array[i + 1]) {
+                        count += 1;
+                    } else {
+                        final += text + count;
+                        word = array[i + 1];
+                        count = 1;
+                    }
+                });
+
+                return console.log(final);
+            };
+
+            func("aaabbbbcdddd");
+
+            // 답안지
+            // const user_input = new String(prompt('문자열을 입력하세요'));
+            // let s = '';
+            // let storeString = user_input[0];
+            // let count = 0;
+
+            // for (let i of user_input){
+            //     if (i === storeString){
+            //         count += 1;
+            //     } else{
+            //         s += storeString + String(count);
+            //         storeString = i;
+            //         count = 1;
+            //     }
+            // }
+
+            // s += storeString + String(count);
+            // console.log(s);
+        </script>
+    </body>
+</html>
