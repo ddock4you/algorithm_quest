@@ -20,40 +20,38 @@
             // 가장 적게 옮길 수 있는 횟수를 출력합니다.
             // 만약 어떻게 해도 정량이 N이 되지 않는다면 -1을 출력합니다.
 
-            // const func = (n) => {
-            //     let count = new Number();
-            //     n % 7 === 0 ? count = n / 7 : n % 3 === 0 ? count = n / 3 : count;
+            const func = (n) => {
+                let count = new Number();
 
-            //     count = parseInt(n / 7);
-            //     n %= 7;
+                while (n >= 3) {
+                    if (n % 7 === 0) {
+                        count += n / 7;
+                        break;
+                    }
+                    n -= 3;
+                    count += 1;
+                }
+                return console.log(count);
+            };
 
-            //     if (n % 3 === 0) {
-            //         count += n / 3;
-            //         return console.log(count);
+            func(29);
+
+            // let N = parseInt(prompt("정량을 입력하세요"), 10);
+            // let result = 0;
+
+            // while (true) {
+            //     if (N % 7 === 0) {
+            //         result += parseInt(N / 7, 10);
+            //         console.log(result);
+            //         break;
             //     }
-
-            //     count = -1;
-            //     return console.log(count);
-            // };
-
-            // func(28);
-
-            let N = parseInt(prompt("정량을 입력하세요"), 10);
-            let result = 0;
-
-            while (true) {
-                if (N % 7 === 0) {
-                    result += parseInt(N / 7, 10);
-                    console.log(result);
-                    break;
-                }
-                N -= 3;
-                result += 1;
-                if (N < 0) {
-                    console.log(-1);
-                    break;
-                }
-            }
+            //     N -= 3;
+            //     result += 1;
+            //     if (N < 0) {
+            //         console.log(-1);
+            //         break;
+            //     }
+            // }
         </script>
     </body>
 </html>
