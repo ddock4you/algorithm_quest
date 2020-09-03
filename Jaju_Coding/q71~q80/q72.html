@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>너비 우선 탐색</title>
+    </head>
+    <body>
+        <script>
+            // **너비 우선 탐색**이란 어떤 노드를 방문하여 확인한 후, 목표한 노드가 아니면 그 노드와 연결된 정점들 중에서 우선순위가 동일한 다른 노드를 찾고 그 순위에 없으면 그다음 순위 노드를 차례대로 찾는 방법이다.
+
+            // 다음과 같이 입력이 주어질 때 **너비 우선 탐색을 한 순서대로 노드의 인덱스를 공백 구분으로 출력하세요.**
+
+            // **데이터**
+            // graph = {'E': ['D', 'A'],
+            //         'F': ['D'],
+            //         'A': ['E', 'C', 'B'],
+            //         'B': ['A'],
+            //         'C': ['A'],
+            //         'D': ['E','F']}
+
+            // **출력**
+            // E D A F C B
+            const graph = {
+                E: ["D", "A"],
+                F: ["D"],
+                A: ["E", "C", "B"],
+                B: ["A"],
+                C: ["A"],
+                D: ["E", "F"],
+            };
+
+            const func = (graph, word) => {
+                let visited = [];
+                let stack = [word];
+
+                while (stack.length !== 0) {
+                    let n = stack.shift();
+                    if (!visited.includes(n)) {
+                        visited.push(n);
+                        graph[n].filter((item) =>
+                            !visited.includes(item) ? stack.push(item) : false
+                        );
+                    }
+                }
+                return visited;
+            };
+
+            console.log(func(graph, "E"));
+        </script>
+    </body>
+</html>
