@@ -27,6 +27,40 @@
             // **출력**
             // 2
 
+            // const graph = {
+            //     A: ["B", "C"],
+            //     B: ["A", "D", "E"],
+            //     C: ["A", "F"],
+            //     D: ["B"],
+            //     E: ["B", "F"],
+            //     F: ["C", "E"],
+            // };
+
+            // const func = (graph, a, b) => {
+            //     let visited = [];
+            //     let stack = [a];
+            //     let count = 0;
+
+            //     while (stack.length !== 0) {
+            //         let n = stack.shift();
+            //         if (!visited.includes(n)) {
+            //             visited.push(n);
+            //             graph[n].filter((item) => {
+            //                 if (!visited.includes(item)) {
+            //                     stack.push(n);
+            //                 }
+            //             });
+            //             // for (let item in graph[n]) {
+            //             //     console.log(item);
+            //             // }
+            //         }
+            //         count += 1;
+            //     }
+            //     return count;
+            // };
+
+            // console.log(func(graph, "A", "F"));
+
             const graph = {
                 A: ["B", "C"],
                 B: ["A", "D", "E"],
@@ -36,30 +70,35 @@
                 F: ["C", "E"],
             };
 
-            const func = (graph, a, b) => {
-                let visited = [];
-                let stack = [a];
-                let count = 0;
+            function solution(a, b) {
+                const start = a;
+                const end = b;
 
-                while (stack.length !== 0) {
-                    let n = stack.shift();
-                    if (!visited.includes(n)) {
-                        visited.push(n);
-                        graph[n].filter((item) => {
-                            if (!visited.includes(item)) {
-                                stack.push(n);
-                            }
-                        });
-                        // for (let item in graph[n]) {
-                        //     console.log(item);
-                        // }
-                    }
+                let queue = [start];
+                let visited = [start];
+                let count = -1;
+
+                while (queue.length !== 0) {
                     count += 1;
-                }
-                return count;
-            };
 
-            console.log(func(graph, "A", "F"));
+                    let size = queue.length;
+
+                    for (let i = 0; i < size; i++) {
+                        let node = queue.splice(0, 1);
+                        if (node == end) {
+                            return count;
+                        }
+
+                        for (let next_node in graph[node]) {
+                            if (!visited.includes(graph[node][next_node])) {
+                                visited.push(graph[node][next_node]);
+                                queue.push(graph[node][next_node]);
+                            }
+                        }
+                    }
+                }
+            }
+            console.log(solution("A", "F"));
         </script>
     </body>
 </html>
