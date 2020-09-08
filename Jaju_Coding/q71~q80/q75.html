@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>이상한 369</title>
+    </head>
+    <body>
+        <script>
+            // 369 게임을 하는데 조금 이상한 규칙이 있습니다. 3이나 6, 9 일 때만 박수를 쳐야합니다. 예를 들어 13, 16과 같이 3과 6, 9 만으로 된 숫자가 아닐 경우엔 박수를 치지 않습니다.
+            // 수현이는 박수를 몇 번 쳤는지 확인하고 싶습니다. 36일 때 박수를 쳤다면 박수를 친 횟수는 5번입니다.
+
+            // n을 입력하면 박수를 몇 번 쳤는지 그 숫자를 출력해주세요.
+
+            // **입력**
+            // '93'
+
+            // **출력**
+            // 10
+
+            const func = (n) => {
+                let count = 0;
+                let confirm = true;
+                if (n < 2) {
+                    return (count = 0);
+                }
+
+                for (let i = 3; i <= n; i += 1) {
+                    const array = String(i).split("");
+                    for (let j in array) {
+                        if (
+                            Number(array[j]) === 0 ||
+                            Number(array[j]) % 3 !== 0
+                        ) {
+                            confirm = false;
+                            break;
+                        }
+                    }
+                    if (confirm) {
+                        count += 1;
+                    }
+                    confirm = true;
+                }
+                return console.log(count);
+            };
+
+            func(36);
+
+            // 답안지
+            // function sol(n) {
+            //     let answer = 0;
+            //     let count = 1;
+            //     const d = { 3: 1, 6: 2, 9: 3 };
+
+            //     while (n.length !== 0) {
+            //         answer += d[parseInt(n.pop(), 10)] * count;
+            //         count *= 3;
+            //     }
+
+            //     return answer;
+            // }
+
+            // const user_input = new String(prompt("입력해주세요")).split("");
+
+            // console.log(sol(user_input));
+        </script>
+    </body>
+</html>
