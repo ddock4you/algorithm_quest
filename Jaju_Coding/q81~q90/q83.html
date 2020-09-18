@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title></title>
+    </head>
+    <body>
+        <script>
+            // 수학공식이 제대로 입력이 되었는지 판단하는 코드를 작성하려 합니다. 괄호는 소괄호밖에 없습니다.
+
+            // **입출력 예시**
+
+            // 데이터 입력(1), 프로그램 종료(2) : 1
+            // 데이터를 입력하세요: 3 + 5
+            // True
+
+            // 데이터 입력(1), 프로그램 종료(2) : 1
+            // 데이터를 입력하세요: 5 + 7) * (3 * 5)
+            // False
+
+            function math(e) {
+                const array = e.replace(/ /gi, "").split("");
+                const m = {
+                    ")": "(",
+                    "}": "{",
+                };
+                let stack = [];
+                let operator = ["+", "-", "*", "/"];
+                let oper = "";
+                for (let i = 0; i < array.length; i += 1) {
+                    if (e[i].includes("(") || e[i].includes("{")) {
+                        stack.push(e[i]);
+                    } else if (m[e[i]]) {
+                        if (stack.length === 0) {
+                            return false;
+                        } else {
+                            let t = m[e[i]];
+                            if (t != stack.pop()) {
+                                return false;
+                            }
+                        }
+                    }
+                    if (operator.includes(array[i])) {
+                        oper = array[i];
+                        if (array[i + 1] === oper) {
+                            return false;
+                        }
+                    }
+                }
+                console.log(stack);
+                return stack.length === 0;
+            }
+
+            while (1) {
+                let order = prompt("데이터 입력(1), 프로그램 종료(2)");
+                if (parseInt(order) === 1) {
+                    const ex = prompt("데이터를 입력하세요");
+                    console.log(math(ex));
+                } else {
+                    break;
+                }
+            }
+
+            // 답안지
+            // function math(e) {
+            //     const m = {
+            //         ")": "(",
+            //         "}": "{",
+            //     };
+            //     let stack = [];
+
+            //     for (let i = 0; i < e.length; i++) {
+            //         if (e[i].includes("(") || e[i].includes("{")) {
+            //             stack.push(e[i]);
+            //         } else if (m[e[i]]) {
+            //             if (stack.length === 0) {
+            //                 return false;
+            //             } else {
+            //                 let t = m[e[i]];
+            //                 if (t != stack.pop()) {
+            //                     return false;
+            //                 }
+            //             }
+            //         }
+            //     }
+            //     return stack.length === 0;
+            // }
+
+            // while (1) {
+            //     const order = prompt("데이터 입력(1), 프로그램 종료(2)");
+            //     if (order === "1") {
+            //         const ex = prompt("데이터를 입력하세요").split("");
+            //         console.log(math(ex));
+            //     } else {
+            //         break;
+            //     }
+            // }
+        </script>
+    </body>
+</html>
