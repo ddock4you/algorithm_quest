@@ -5,11 +5,11 @@
 
 /*
     *예제 출력
-        1
-        2
-        3
-        4
         5
+        4
+        3
+        2
+        1
 */
 
 const fs = require("fs");
@@ -20,7 +20,7 @@ const condition = (v) => v <= 100000;
 let answer = String();
 
 if (condition(input)) {
-    for (let i = 1; i <= input; i += 1) answer += `${i}\n`;
+    for (let i = 0; i < input; i += 1) answer += `${input - i}\n`;
 }
 const lastIndex = answer.lastIndexOf("\n");
 console.log(answer.slice(0, lastIndex));
