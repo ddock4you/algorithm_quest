@@ -21,13 +21,19 @@ let answer = String();
 let star = String();
 
 if (condition(input)) {
-    for (let i = 0; i < input; i += 1) {
-        let blank = "";
-        for (let j = 0; j < input - i; j += 1) {
-            blank += " ";
-        }
-        star += "*";
-        answer += `${blank}${star}\n`;
+    // 문제 풀이 1
+    // for (let i = 0; i < input; i += 1) {
+    //     let blank = "";
+    //     for (let j = 0; j < input - i; j += 1) {
+    //         blank += " ";
+    //     }
+    //     star += "*";
+    //     answer += `${blank}${star}\n`;
+    // }
+
+    // 문제 풀이 2
+    for (let i = 1; i <= input; i += 1) {
+        answer += `${" ".repeat(input - i)}${"*".repeat(i)}\n`;
     }
 }
 
