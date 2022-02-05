@@ -17,17 +17,15 @@ const input = Number(fs.readFileSync(filePath).toString().trim());
 
 const condition = (v) => v >= 0 && v <= 99;
 let num = input;
-let sum = 0;
+let sum;
 let i = 0;
 
-if(condition(num)) {
-    while (num !== sum) {
-        if (num < 10) num = String(num) + 0;
-        const [num1, num2] = String(num);
-        sum = num2 + (Number(num1) + Number(num2));
-        num = sum;
+if(condition(input)) {
+    while(true) {
+        sum = Math.floor(num / 10) + num % 10;
+        num = (num % 10) * 10 + sum % 10;
         i += 1;
-        console.log(i);
+        if (input === num) break;
     }
 }
 
