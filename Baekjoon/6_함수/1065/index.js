@@ -6,20 +6,27 @@
 
 const fs = require("fs");
 const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
-const input = fs.readFileSync(filePath).toString();
+const input = Number(fs.readFileSync(filePath).toString());
 
 const N = input;
-const condition = (v) => v >= 1000;
+const condition = (v) => v <= 1000;
+let i = 1;
 let count = 0;
 
 if (condition(N)) {
-    while (count <= N) {
-        if (count < 100) {
+    while (i <= N) {
+        if (i < 100) {
             count += 1;
-            break;
+            i += 1;
+            continue;
         }
-        
+        const iString = String(i);
+        const A = iString[0] - iString[1];
+        const B = iString[1] - iString[2];
+
+        if (A === B) count += 1;
+        i += 1;
     }
 }
 
-
+console.log(count);
