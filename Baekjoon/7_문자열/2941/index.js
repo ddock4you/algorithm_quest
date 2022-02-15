@@ -6,7 +6,6 @@
 // * 단어는 크로아티아 알파벳으로 이루어져 있다. 문제 설명의 표에 나와있는 알파벳은 변경된 형태로 입력된다.
 // ? 출력: 입력으로 주어진 단어가 몇 개의 크로아티아 알파벳으로 이루어져 있는지 출력한다.
 
-
 /*
  *예제 출력
      6
@@ -15,23 +14,18 @@
 const fs = require("fs");
 const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
 const input = fs.readFileSync(filePath).toString().trim();
-const croatiaAlphabet = ['c=','c-','dz=','d-','lj','nj','s=','z='];
-let convertWord = [input];
+const croatiaAlphabet = ["c=", "c-", "dz=", "d-", "lj", "nj", "s=", "z="];
+let convertWord = input;
 
 const condition = (v) => v <= 100;
 
 if (condition(input.length)) {
-     let count = 0;
-     croatiaAlphabet.forEach((alphabet) => {
-        convertWord.forEach((word) => {
-            console.log({convertWord});
-            if (word.includes(alphabet)) {
-                count += 1;
-                convertWord = word.split(alphabet);
-            }
-        })
-    })    
-    convertWord = convertWord.join('');
-    count += convertWord.length;
-    console.log(count);
+    croatiaAlphabet.reduce((acc, alphabet) => {
+        if (convertWord.includes(alphabet)) {
+            acc += 1;
+            convertWord = convertWord.split(alphabet).join('A');
+        }
+        return acc;
+    }, 0)
+    console.log(convertWord.length);
 }
