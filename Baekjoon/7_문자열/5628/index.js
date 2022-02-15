@@ -10,13 +10,25 @@
 
 /*
  *예제 출력
-      437
+      13
  */
 
 const fs = require("fs");
 const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
 const input = fs.readFileSync(filePath).toString().trim().split('');
+const condition = (v) => v >= 2 && v <= 15;
 
-const alphabetArray = ['ABC','DEF','GHI','JKL','MNO','PQRS','TUV','WXYZ'];
+if (condition(input.length)) {
+     const alphabetArray = ['ABC', 'DEF', 'GHI', 'JKL', 'MNO', 'PQRS', 'TUV', 'WXYZ'];
+     const sum = input.reduce((acc, dial) => {
+          alphabetArray.some((group, index) => {
+               if (group.includes(dial)) {
+                    acc += index + 3;
+                    return true;
+               };
+          });
+          return acc;
+     }, 0);
 
-const sum = 
+     console.log(sum);
+}
