@@ -36,10 +36,50 @@ const fs = require("fs");
 const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
 const input = fs.readFileSync(filePath).toString().trim().split('\n').map(v => v.split(' ').map(v2 => Number(v2)));
 
-const [T]= input[0];
 const arrayGroup = input.slice(1, input.length);
 
-arrayGroup.forEach((array) => {
+const heightCondition = (v) => v >= 1;
+const widthCondition = (v) => v <= 99; 
+
+// 이전에 풀은 문제
+// const result = arrayGroup.reduce((acc, array) => {
+//    const [H, W, N] = array;
+//    if (heightCondition(H) && widthCondition(W)) {
+//       let count = 0;
+//       let roomNumberH = 0;
+//       let roomNumberW = 1;
+//       while (count < N) {
+//          roomNumberH += 1;
+//          if (roomNumberH > H) {
+//             roomNumberH = 1;
+//             roomNumberW += 1;
+//          }
+//          count += 1;
+//          console.log({count, roomNumberH, roomNumberW});
+//       }
+//       if (roomNumberW < 10) roomNumberW = '0'+ roomNumberW;
+//       else String(roomNumberW);
+//       acc.push(roomNumberH + roomNumberW);
+//    }
+//    return acc;
+// }, []);
+
+// console.log(result.join('\n'));
+
+
+arrayGroup.forEach(array => {
    const [H, W, N] = array;
-   console.log({T, H, W, N});
+   if (heightCondition(H) && widthCondition(W)) {
+      let roomNumberH = null;
+      let roomNumberW = null;
+      if (N % H === 0) { // 꼭대기층
+         roomNumberH = H;
+         roomNumberW = N / H;
+      } else {
+         roomNumberH = N % H;
+         roomNumberW = Math.ceil(N / H);
+      }
+      if (roomNumberW < 10) roomNumberW = `0${roomNumberW}`
+      console.log(`${roomNumberH}${roomNumberW}`)
+   }
 });
