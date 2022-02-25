@@ -33,12 +33,12 @@ if (condition(sugar)) {
       }
 
       if (sugar < 0) {
-         sugar = 0;
+         sugar = -1;
          break;
       }
 
       sugar -= 3;
       threeBag += 1;
    }
-   console.log(sugar >= 0 ? fiveBag + threeBag : -1);
+   console.log(sugar < 0 ? -1 : fiveBag + threeBag);
 }
