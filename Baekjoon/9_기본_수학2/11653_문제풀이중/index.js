@@ -18,5 +18,5 @@ const condition = (v) => v >= 1 && v <= 10000000;
 
 
 if (condition(N)) {
-    
+        
 }
