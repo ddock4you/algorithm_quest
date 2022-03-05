@@ -45,13 +45,3 @@ array.forEach(v => {
         console.log(answer.length);
     }
 })
-// if (condition(v)) {
-//     const isPrime = (num) => {
-//         if (num === 1) return;
-//         for (var i = 2; i <= Math.sqrt(num); i += 1) {
-//             if (num % i == 0) return;
-//         }
-//         return true;
-//     };
-//     for (var i = M; i <= N; i += 1) isPrime(i) ? console.log(i) : null;
-// }
