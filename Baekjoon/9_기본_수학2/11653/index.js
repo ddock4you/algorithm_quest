@@ -12,11 +12,24 @@ const fs = require("fs");
 const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
 const input = Number(fs.readFileSync(filePath).toString());
 
-const N = input;
+let N = input;
 
 const condition = (v) => v >= 1 && v <= 10000000;
 
 
-if (condition(N)) {
-        
+if (condition(N)) {     
+     let devideValue = 2;
+     let answer = '';
+     while (N > 1) {
+          if (devideValue > N) {
+               answer += `${N}\n`;
+               break;
+          }
+          if (N % devideValue === 0) {
+               N /= devideValue;
+               answer += `${devideValue}\n`;
+          } else devideValue += 1; 
+     }
+     const lastIndex = answer.lastIndexOf('\n');
+     if (answer) console.log(answer.slice(0, lastIndex));
 }
