@@ -40,18 +40,11 @@ const input = fs
     .split("\n")
     .map((v) => v.trim());
 
-// const [N, ...arr] = input;
-const N = isNaN(input[0]) ? null : Number(input[0]);
 const arr = input.slice(1);
 
-console.log(isNaN(input[0]));
-console.log({ N, arr });
-
-const condition = (v) => v >= 1 && v <= 1000;
-
 const recursion = (word, l, r) => {
-    if (l >= r) return 1;
-    else if (word[l] != word[r]) return 0;
+    if (l >= r) return `1 ${l + 1}`;
+    else if (word[l] != word[r]) return `0 ${l + 1}`;
     else return recursion(word, l + 1, r - 1);
 };
 
@@ -59,4 +52,8 @@ const isPalindrome = (word) => {
     return recursion(word, 0, word.length - 1);
 };
 
-console.log(isPalindrome("ABBA"));
+arr.forEach((word) => {
+    console.log(isPalindrome(word));
+});
+
+// 백준에선 틀렸다고 나옴
