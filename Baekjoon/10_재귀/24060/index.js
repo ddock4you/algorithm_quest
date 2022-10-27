@@ -55,22 +55,29 @@ const input = fs
     .readFileSync(filePath)
     .toString()
     .split("\n")
-    .map((v) => v.trim());
+    .map((v) => v.trim().split(" "));
 
-const arr = input.slice(1);
+const [[N, num], arr] = input;
+const array = arr.map((v) => Number(v));
 
-const recursion = (word, l, r) => {
-    if (l >= r) return `1 ${l + 1}`;
-    else if (word[l] != word[r]) return `0 ${l + 1}`;
-    else return recursion(word, l + 1, r - 1);
+const merge = (left, right) => {
+    const mergeArray = [];
+    while (left.length && right.length) {
+        if (left[0] > right[0]) {
+            mergeArray.push(right.shift());
+        } else {
+            mergeArray.push(left.shift());
+        }
+    }
+    return [...mergeArray, ...left, ...right];
 };
 
-const isPalindrome = (word) => {
-    return recursion(word, 0, word.length - 1);
+const merge_sort = (array) => {
+    if (array.length === 1) return array;
+    const center_digit = Math.ceil(array.length / 2);
+    const left = array.slice(0, center_digit);
+    const right = array.slice(center_digit);
+    return merge(merge_sort(left), merge_sort(right));
 };
 
-arr.forEach((word) => {
-    console.log(isPalindrome(word));
-});
-
-// 백준에선 틀렸다고 나옴
+console.log(merge_sort(array));
