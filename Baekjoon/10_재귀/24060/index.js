@@ -60,20 +60,27 @@ const input = fs
 const [[N, num], arr] = input;
 const array = arr.map((v) => Number(v));
 
+let count = 0;
+let target;
+
 const merge = (left, right) => {
     const mergeArray = [];
     while (left.length && right.length) {
-        if (left[0] > right[0]) {
-            mergeArray.push(right.shift());
+        count += 1;
+        if (left[0] >= right[0]) {
+            target = right.shift();
+            mergeArray.push(target);
         } else {
-            mergeArray.push(left.shift());
+            target = left.shift();
+            mergeArray.push(target);
         }
+        console.log({ target });
     }
     return [...mergeArray, ...left, ...right];
 };
 
 const merge_sort = (array) => {
-    if (array.length === 1) return array;
+    if (array.length <= 1) return array;
     const center_digit = Math.ceil(array.length / 2);
     const left = array.slice(0, center_digit);
     const right = array.slice(center_digit);
@@ -81,3 +88,4 @@ const merge_sort = (array) => {
 };
 
 console.log(merge_sort(array));
+console.log({ count, target });
