@@ -42,8 +42,7 @@ const validAnagram: confirmType = (word1, word2) => {
     const word2Array = word2.split("");
 
     for (let key of word2Array) {
-        if (!word1Object.hasOwnProperty(key) || word1Object[key] <= 0)
-            return false;
+        if (!word1Object.hasOwnProperty(key) || word1Object[key] <= 0) return false;
 
         word1Object[key] -= 1;
     }
@@ -56,6 +55,7 @@ const convertObject = (arr: string[]) => {
         return acc;
     }, {} as convertObjectInit);
 
+    console.log(convert);
     return convert;
 };
 
