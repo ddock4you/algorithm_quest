@@ -15,16 +15,18 @@ interface Iobj {
 }
 
 function stringifyNumbers(obj: Iobj) {
+    const newObj: Iobj = {};
     for (let key in obj) {
         if (typeof obj[key] === "object") {
-            stringifyNumbers(obj[key]);
-        }
-        if (typeof obj[key] === "number") {
-            obj[key] = obj[key] + "";
+            newObj[key] = stringifyNumbers(obj[key]);
+        } else if (typeof obj[key] === "number") {
+            newObj[key] = obj[key] + "";
+        } else {
+            newObj[key] = obj[key];
         }
     }
 
-    return obj;
+    return newObj;
 }
 
 console.log(stringifyNumbers(obj));

@@ -5,19 +5,23 @@ var obj = {
         val: 4,
         info: {
             isRight: true,
-            random: 66,
-        },
-    },
-};
-function stringifyNumbers(obj) {
-    for (var key in obj) {
-        if (typeof obj[key] === "object") {
-            stringifyNumbers(obj[key]);
-        }
-        if (typeof obj[key] === "number") {
-            obj[key] = String(obj[key]);
+            random: 66
         }
     }
-    return obj;
+};
+function stringifyNumbers(obj) {
+    var newObj = {};
+    for (var key in obj) {
+        if (typeof obj[key] === "object") {
+            newObj[key] = stringifyNumbers(obj[key]);
+        }
+        else if (typeof obj[key] === "number") {
+            newObj[key] = obj[key] + "";
+        }
+        else {
+            newObj[key] = obj[key];
+        }
+    }
+    return newObj;
 }
 console.log(stringifyNumbers(obj));
