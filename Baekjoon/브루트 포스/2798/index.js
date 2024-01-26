@@ -16,5 +16,16 @@ const goal = input[0][1];
 const cards = input[1];
 
 let sum = 0;
+for (let i = 0; i < cards.length - 2; i += 1) {
+    for (let j = i + 1; j < cards.length - 1; j += 1) {
+        for (let k = j + 1; k < cards.length; k += 1) {
+            const cardSum = cards[i] + cards[j] + cards[k];
+            if (cardSum > sum && cardSum <= goal) {
+                sum = cardSum;
+                if (sum === goal) break;
+            }
+        }
+    }
+}
 
-console.log(input);
+console.log(sum);
