@@ -1,6 +1,6 @@
 /*
-TODO 제목: 소트인사이드
-! https://www.acmicpc.net/problem/1427
+TODO 제목: 수 정렬하기2
+! https://www.acmicpc.net/problem/2751
 */
 
 const fs = require("fs");
@@ -9,9 +9,10 @@ const input = fs
     .readFileSync(filePath)
     .toString()
     .trim()
-    .split("")
-    .map((number) => Number(number));
+    .split("\n")
+    .map((number) => Number(number))
+    .slice(1);
 
-console.log(input.sort((a, b) => b - a).join(""));
+console.log(input.sort((a, b) => a - b).join("\n"));
 
 // console.log를 한줄씩 출력하려 하면 시간초과로 검사 진행이 안됨.
