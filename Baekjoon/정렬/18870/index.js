@@ -9,10 +9,14 @@ const input = fs
     .readFileSync(filePath)
     .toString()
     .trim()
-    .split("\n").map((array) => array.split(" ").map(word => word.replace(/\r/g, "")))
+    .split("\n")
     .slice(1)
 
-input.sort((a, b) => a[0] - b[0]).map((array) => console.log(`${array[0]} ${array[1]}`));
+let result = '';
+const array = input[0].split(" ").map(v => +v);
+const sortArray = Array.from(new Set(array.sort((a,b) => b - a)));
+sortArray.forEach((v, i) => console.log(sortArray.slice(i + 1)))
+// input.sort((a, b) => a[0] - b[0]).map((array) => console.log(`${array[0]} ${array[1]}`));
 
 
 
