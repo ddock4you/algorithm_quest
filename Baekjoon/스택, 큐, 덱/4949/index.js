@@ -12,27 +12,35 @@ const input = fs
   .split(`\n`).map(v => v.replace(/\r/g, ""))
 
 
-const func = (words) => {
-  let bigCount = 0;
-  let smallCount = 0;
+const sentenceCheck = (sentence) => {
+  let stack = [];
 
-  for (const word of words) {
-    if (word === '(') smallCount += 1;
-    if (word === ')') smallCount -= 1;
-    if (word === '[') bigCount += 1;
-    if (word === ']') bigCount -= 1;
-
-    if (bigCount < 0 || smallCount < 0) return 'NO';
+  for (const letter of sentence) {
+    if (letter === '(' || letter === '[') {
+      stack.push(letter);
+    } else if (letter === ')') {
+      if (stack.pop() !== '(') {
+        return 'no'
+      }       
+    } else if (letter === "]") {
+      if (stack.pop() !== '[') {
+        return 'no'
+      }
+    }
   }
-
-  return bigCount === 0 && smallCount === 0 ? 'YES' : 'NO'
+  
+  return stack.length === 0 ? 'yes' : 'no'
 }
 
-const result = input.map((item) => {
-  if (item === '.') return;
-  return func(item);
-})
-console.log(result);
-console.log(result.join("\n"));
+const func = () => {
+  const result = [];
+  for (const sentence of input) {
+    if (sentence === '.') break;
+    result.push(sentenceCheck(sentence));
+  }
+  return result.join("\n");
+}
+
+console.log(func(input));
 // console.timeEnd();
 
