@@ -6,22 +6,22 @@ TODO 제목: 큐 2
 const fs = require("fs");
 const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
 const input = fs
-    .readFileSync(filePath)
-    .toString()
-    .trim()
-    .split(`\n`)
-    .map((v) => (v.includes(" ") ? v.split(" ") : v.replace(/\r/g, "")));
+  .readFileSync(filePath)
+  .toString()
+  .trim()
+  .split(`\n`)
+  .map((v) => (v.includes(" ") ? v.split(" ") : v.replace(/\r/g, "")));
 
 const queue = [];
 const [N, ...command] = input;
 let result = "";
 
 const commandList = {
-    push: (number) => queue.push(number),
-    pop: () => {
-        let shift = queue.length === 0 ? -1 : queue.shift();
-        return (result += `${shift}\n;`);
-    },
+  push: (number) => queue.push(number),
+  pop: () => {
+    let shift = queue.length === 0 ? -1 : queue.shift();
+    return (result += `${shift}\n;`);
+  },
 };
 
 console.log(N, command);
